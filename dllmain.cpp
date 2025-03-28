@@ -25,7 +25,7 @@ static std::mutex mtx;
 static std::string path;
 
 static void hkParseStream(void* instance, void* cfs, void* jthread) {
-    mtx.lock();
+    //mtx.lock();
     const ClassFileStream* classFileStream = reinterpret_cast<ClassFileStream*>(cfs);
     std::string file = std::string(path).append("class-").append(std::to_string(cnt)).append(".class");
     std::ofstream* out = new std::ofstream(file, std::ios::binary | std::ios::out);
@@ -35,7 +35,7 @@ static void hkParseStream(void* instance, void* cfs, void* jthread) {
     out->close();
     java_print("Save: " + file);
     ++cnt;
-    mtx.unlock();
+    //mtx.unlock();
     return oParseStream(instance, cfs, jthread);
 }
 
