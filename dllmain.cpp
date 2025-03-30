@@ -35,6 +35,7 @@ static void hkParseStream(void* instance, void* cfs, void* jthread) {
     out->close();
     java_print("Save: " + file);
     ++cnt;
+    delete out;
     //mtx.unlock();
     return oParseStream(instance, cfs, jthread);
 }
